@@ -3,7 +3,7 @@ set -e
 
 echo "Installing dependencies..."
 
-sudo pacman -S --needed --noconfirm hyprland hyprpaper waybar kitty rofi-wayland xdg-desktop-portal-hyprland polkit-kde-agent networkmanager ly fastfetch ttf-jetbrains-mono-nerd ttf-font-awesome noto-fonts noto-fonts-emoji pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber alsa-utils pamixer brightnessctl grim slurp wl-clipboard xdg-user-dirs xdg-utils neovim git unzip fastfetch
+sudo pacman -S --needed --noconfirm hyprland hyprpaper waybar kitty rofi-wayland xdg-desktop-portal-hyprland polkit-kde-agent networkmanager ly fastfetch ttf-jetbrains-mono-nerd ttf-font-awesome noto-fonts noto-fonts-emoji pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber alsa-utils pamixer brightnessctl grim slurp wl-clipboard xdg-user-dirs xdg-utils neovim git unzip fastfetch starship
 
 echo "Enabling services..."
 sudo systemctl enable NetworkManager
@@ -25,7 +25,7 @@ paru -S helium-browser
 echo "Installing orbit (waybar module)"
 paru -S orbit-wifi
 
-echo "Setting Bash as default shell..."
+echo "Setting Fish as default shell..."
 chsh -s /bin/bash
 
 echo "Creating config directories..."
@@ -37,18 +37,26 @@ echo "Installing wallpaper..."
 sudo mkdir -p /usr/share/backgrounds
 sudo cp assets/astolfo.png /usr/share/backgrounds/astolfo.png
 
-echo "Hyprpaper config..."
+echo "Installing Hyprpaper config..."
 cp hyprpaper.conf ~/.config/hypr/hyprpaper.conf
 
-echo "Hyprland config..."
+echo "Installing Hyprland config..."
 cp hyprland.conf ~/.config/hypr/hyprland.conf
 
 echo "Installing Waybar config..."
 cp waybar/config.jsonc ~/.config/waybar/config
 cp waybar/style.css ~/.config/waybar/style.css
 
+echo "Installing Kitty config"
+cp kitty/kitty.conf ~/.config/kitty/kitty.conf
+cp kitty/current-theme.conf ~/.config/kitty/current-theme.conf
+
 echo "Installing Fastfetch config..."
 cp fastfetch/config.jsonc ~/.config/fastfetch/config
+
+echo "Installing Fish config..."
+cp fish/config.fish ~/.config/fish/config.fish
+starship preset jetpack -o ~/.config/starship.toml 
 
 echo "Creating pacman monster alias..."
 alias monster="sudo pacman"
