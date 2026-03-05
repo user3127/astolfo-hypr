@@ -23,7 +23,7 @@ echo "Installing the browser"
 paru -S librewolf-bin
 
 echo "Setting Fish as default shell..."
-chsh -s $(which bash)
+chsh -s /bin/bash
 
 echo "Creating config directories..."
 mkdir -p ~/.config/hypr
