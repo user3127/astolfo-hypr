@@ -22,6 +22,9 @@ fi
 echo "Installing the browser"
 paru -S librewolf-bin
 
+echo "Installing orbit (waybar module)"
+paru -S orbit-wifi
+
 echo "Setting Fish as default shell..."
 chsh -s /bin/bash
 
